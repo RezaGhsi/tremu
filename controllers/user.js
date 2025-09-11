@@ -7,8 +7,12 @@ const tokenGen = require("../utils/tokenGenerator");
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().lean().select("-password");
-    res.json(req.headers);
+    res.json(users);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
+};
+
+exports.getMe = async (req, res) => {
+  res.json(req.user);
 };

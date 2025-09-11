@@ -14,7 +14,7 @@ exports.register = async (req, res) => {
   const isUserExists = await userModel.findOne({
     $or: [{ email }, { username }],
   });
-  console.log(isUserExists);
+
   if (isUserExists) {
     return res.status(400).json({
       error: "User Already Registered With this Email or Username!",
@@ -61,9 +61,7 @@ exports.logIn = async (req, res) => {
       return res.status(400).json({ message: "Invalid Email or Password!" });
     } else {
       const tokens = tokenGen({
-        _id: user._id,
-        email: user.email,
-        role: user.role,
+        id: user._id,
       });
 
       delete user.password;

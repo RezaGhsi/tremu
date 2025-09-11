@@ -25,6 +25,11 @@ module.exports = async (req, res, next) => {
     }
 
     const user = await userModel.findById(payload.id).lean();
+    if (!user) {
+      return res.status(403).json({
+        error: "This route is Protected and You dont Have Access to it!!",
+      });
+    }
     Reflect.deleteProperty(user, "password");
 
     req.user = user;
