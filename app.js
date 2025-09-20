@@ -18,8 +18,8 @@ app.use(cors());
 app.use(morgan("dev"));
 
 app.use(
-  "uploads/musics",
-  express.static(path.join(__dirname, "uploads/musics"))
+  "/uploads/musics",
+  express.static(path.join(__dirname, "uploads", "musics"))
 );
 
 app.use("/auth", authRoutes);
