@@ -3,7 +3,7 @@ const controller = require("./../controllers/music");
 const authMiddleware = require("./../middlewares/auth");
 const isAdminMiddleware = require("./../middlewares/isAdmin");
 
-router.get("/", authMiddleware, isAdminMiddleware, controller.getAllSongs);
-router.get("/:id", authMiddleware, isAdminMiddleware, controller.getMusicById);
+router.get("/", controller.getAllSongs);
+router.get("/:id", controller.getMusicById);
 
 module.exports = router;

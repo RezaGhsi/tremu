@@ -22,11 +22,11 @@ app.use(
   express.static(path.join(__dirname, "uploads", "musics"))
 );
 
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/download/music/", downloadRoutes);
-app.use("/music", musicRoutes);
-app.use("/user", userRoutes);
-app.use("/upload", uploadRoutes);
+app.use("/api/music", musicRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.use((err, req, res, next) => {
   if (!err) return next();
